@@ -1,15 +1,43 @@
-var fizzBuzz = function(count){
-    if(isInValidate(count)){
+function isFizz(number) {
+    return number%3 === 0 ? "Fizz" : "";
+}
+
+function isBuzz(number) {
+    return number%5 === 0 ? "Buzz" : "";
+}
+
+function isWhizz(number) {
+    return number%7 === 0 ? "Whizz" : "";
+}
+
+var getFizzBuzz = function (count) {
+    if (isInValidate(count)) {
         return "invalidate input";
     }
-    return count;
+
+    var fizzBuzzResults = new Array();
+
+    for(var number=0;number<count;number++){
+        var numberFizzBuzzResult = isFizz(number) + isBuzz(number) + isWhizz(number);
+
+        fizzBuzzResults.push(numberFizzBuzzResult);
+    }
+    return fizzBuzzResults;
 };
 
-function isInValidate(count){
-    if(count===undefined||count===null||!(/(^[1-9]\d*$)/.test(count))){
+function isInValidate(count) {
+    if (count === undefined || count === null || !(/(^[1-9]\d*$)/.test(count))) {
         return true;
     }
     return false;
 }
 
-module.exports = fizzBuzz;
+
+
+module.exports.getFizzBuzz = getFizzBuzz;
+
+module.exports.isFizz = isFizz;
+
+module.exports.isBuzz = isBuzz;
+
+module.exports.isWhizz = isWhizz;
