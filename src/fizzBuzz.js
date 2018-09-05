@@ -1,3 +1,10 @@
+function isInValidate(count) {
+    if (count === undefined || count === null || !(/(^[1-9]\d*$)/.test(count))) {
+        return true;
+    }
+    return false;
+}
+
 function isFizz(number) {
     return number%3 === 0 ? "Fizz" : "";
 }
@@ -11,28 +18,21 @@ function isWhizz(number) {
 }
 
 var getFizzBuzz = function (count) {
+
     if (isInValidate(count)) {
         return "invalidate input";
     }
 
     var fizzBuzzResults = new Array();
 
-    for(var number=0;number<count;number++){
+    for(var number=1;number<=count;number++){
+
         var numberFizzBuzzResult = isFizz(number) + isBuzz(number) + isWhizz(number);
 
-        fizzBuzzResults.push(numberFizzBuzzResult);
+        fizzBuzzResults.push(numberFizzBuzzResult === "" ? number : numberFizzBuzzResult);
     }
     return fizzBuzzResults;
 };
-
-function isInValidate(count) {
-    if (count === undefined || count === null || !(/(^[1-9]\d*$)/.test(count))) {
-        return true;
-    }
-    return false;
-}
-
-
 
 module.exports.getFizzBuzz = getFizzBuzz;
 
